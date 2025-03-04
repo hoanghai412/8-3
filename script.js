@@ -53,3 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.addEventListener("click", playMusic, { once: true });
     document.body.addEventListener("touchstart", playMusic, { once: true });
 });
+
+document.getElementById("heart").style.display = "none"; // Ẩn trái tim ban đầu
+...
