@@ -27,6 +27,10 @@ document.getElementById("openGift").addEventListener("click", function () {
         let heart = document.getElementById("heart");
         heart.style.display = "block";
         heart.style.animation = "heartbeat 1.5s infinite";
+        heart.style.position = "absolute";
+        heart.style.top = "30%";
+        heart.style.left = "50%";
+        heart.style.transform = "translate(-50%, -50%)";
     }, 1000);
 
     setTimeout(() => {
