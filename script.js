@@ -35,30 +35,22 @@ function nextMessage() {
     if (currentIndex < messages.length) {
         messageElement.innerHTML = messages[currentIndex];
 
-        // Hiển thị hình ảnh & video chúc mừng 8/3
+        // Ẩn tất cả hình ảnh & video trước khi kiểm tra điều kiện
+        womensDayImage.style.display = "none";
+        womensDayVideo.style.display = "none";
+        introImage.style.display = "none";
+        requestImage.style.display = "none";
+
+        // Hiển thị hình ảnh hoặc video theo từng bước
         if (currentIndex === 0) {
             womensDayImage.style.display = "block";
-            womensDayVideo.style.display = "none";
         } else if (currentIndex === 1) {
-            womensDayImage.style.display = "none";
             womensDayVideo.style.display = "block";
             womensDayVideo.play();
-        } 
-        // Khi đến bước giới thiệu Hải thì hiển thị hình ảnh "gioithieu.png"
-        else if (currentIndex === 3) {
-            womensDayImage.style.display = "none";
-            womensDayVideo.style.display = "none";
+        } else if (currentIndex === 3) {
             introImage.style.display = "block";
-        } 
-        // Khi đến bước "Cho mình làm quen nha" thì hiển thị hình ảnh "cho.jpg"
-        else if (currentIndex === 4) {
-            introImage.style.display = "none";
+        } else if (currentIndex === 4) {
             requestImage.style.display = "block";
-        } else {
-            womensDayImage.style.display = "none";
-            womensDayVideo.style.display = "none";
-            introImage.style.display = "none";
-            requestImage.style.display = "none";
         }
 
         currentIndex++;
@@ -75,26 +67,26 @@ function sayYes() {
     alert("Yayyy! Mình làm bạn nhé! 💖🥰");
 }
 
-// Nút "Không" chạy trốn
+// Nút "Không" chạy trốn (Cải thiện để chạy tốt trên điện thoại)
 function runAway() {
     let noButton = document.getElementById("noButton");
-    let x = Math.random() * (window.innerWidth - 100);
-    let y = Math.random() * (window.innerHeight - 50);
+    let x = Math.random() * (window.innerWidth - noButton.clientWidth);
+    let y = Math.random() * (window.innerHeight - noButton.clientHeight);
 
+    noButton.style.position = "absolute";
     noButton.style.left = `${x}px`;
     noButton.style.top = `${y}px`;
 }
 
-// Tự động phát nhạc
-document.addEventListener("DOMContentLoaded", function () {
-    let music = document.getElementById("loveSong");
-    music.play().catch(error => console.log("Tự động phát nhạc bị chặn:", error));
-});
+// Tự động phát nhạc khi trang load hoặc khi người dùng nhấn vào màn hình
 document.addEventListener("DOMContentLoaded", function () {
     let music = document.getElementById("loveSong");
 
-    // Khi người dùng click vào trang web lần đầu, nhạc sẽ phát
-    document.body.addEventListener("click", function () {
+    function playMusic() {
         music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
-    });
+    }
+
+    // Phát nhạc khi người dùng click hoặc chạm vào trang
+    document.body.addEventListener("click", playMusic, { once: true });
+    document.body.addEventListener("touchstart", playMusic, { once: true });
 });
