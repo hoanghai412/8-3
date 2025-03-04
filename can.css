@@ -1,41 +1,55 @@
+/* Đặt nền màu hồng */
 body {
-    background-color: pink;
-    text-align: center;
+    background-color: #ffccdc;
     font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-#screen {
-    position: relative;
-    width: 100%;
-    height: 100vh;
+/* Căn giữa toàn bộ nội dung */
+#container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
+/* Tùy chỉnh nút bấm */
 button {
-    background-color: #ff66b2; 
+    background-color: #ff66b2;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 50px;
     margin: 10px;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
     background-color: #ff3385;
+    transform: scale(1.1);
 }
 
+/* Căn chỉnh ảnh */
+img, video {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Hiệu ứng trái tim */
 .heart {
     width: 100px;
     height: 100px;
     background: red;
     position: absolute;
-    top: 20%;
+    top: 50px;
     animation: heartbeat 1s infinite;
 }
 
@@ -43,4 +57,9 @@ button:hover {
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
+}
+
+/* Nút chạy trốn */
+#noButton {
+    position: absolute;
 }
