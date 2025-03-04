@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trái Tim Yêu Thương</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="can.css">
 </head>
-<body id="screen">
-    <!-- Nút mở quà -->
-    <button id="openGift">Mở quà</button>
+<body>
+    <!-- Trái tim xuất hiện trước -->
+    <div class="heart" id="heart"></div> 
 
-    <!-- Trái tim -->
-    <div class="heart" id="heart"></div>
+    <!-- Ẩn chữ ban đầu -->
+    <h1 id="intro-text" style="display: none;">💖 Chào mừng đến với thế giới yêu thương 💖</h1>  
 
-    <!-- Nội dung sau khi trái tim biến mất -->
     <div id="message-container" style="display: none;">
         <p id="message"></p>
-        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px;">
-        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px;">
-        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px;">
+        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px; height: auto;">
+        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px; height: auto;">
+        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px; height: auto;">
         <video id="womens-day-video" src="videocho.mp4" controls muted style="display: none; width: 300px;"></video>
         <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
     </div>
@@ -29,7 +28,7 @@
         <button id="noButton" onmouseover="runAway()">Không 😆</button>
     </div>
 
-    <!-- Nhạc nền -->
+    <!-- Nhạc tự động phát -->
     <audio id="loveSong" autoplay loop>
         <source src="videodung.mp3" type="audio/mpeg">
     </audio>
