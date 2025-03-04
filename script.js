@@ -13,6 +13,7 @@ window.onload = function () {
     document.getElementById("heart").style.display = "none";
     document.getElementById("message-container").style.display = "none";
     document.getElementById("openGift").style.display = "block";
+    document.getElementById("loveSong").play().catch(error => console.log("Không thể tự động phát nhạc:", error));
 };
 
 document.getElementById("openGift").addEventListener("click", function () {
