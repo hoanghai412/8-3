@@ -3,7 +3,7 @@ let messages = [
     "Mình cũng muốn gửi lời chúc: Chúc bạn có một ngày tuyệt vời, tràn đầy yêu thương và nụ cười nhé! 😊✨",
     "Xin chào bạn nào đó xinh xinh! 🥰",
     "Tớ tên là Hoàng Trung Hải 😊",
-    "Giới thiệu xong rồi, cho tớ làm quen nha? ❤️"
+    "Giới thiệu xong rồi, bạn có muốn làm quen không? 🥰"
 ];
 
 let currentIndex = 0;
@@ -14,6 +14,10 @@ window.onload = function () {
     document.getElementById("message-container").style.display = "none";
     document.getElementById("openGift").style.display = "block";
     document.getElementById("choice-container").style.display = "none";
+    document.getElementById("womens-day-image").style.display = "none";
+    document.getElementById("womens-day-video").style.display = "none";
+    document.getElementById("intro-image").style.display = "none";
+    document.getElementById("request-image").style.display = "none";
 };
 
 document.getElementById("openGift").addEventListener("click", function () {
@@ -48,9 +52,42 @@ document.getElementById("openGift").addEventListener("click", function () {
 function nextMessage() {
     let messageElement = document.getElementById("message");
     let nextButton = document.getElementById("nextButton");
+    let womensDayImage = document.getElementById("womens-day-image");
+    let womensDayVideo = document.getElementById("womens-day-video");
+    let introImage = document.getElementById("intro-image");
+    let requestImage = document.getElementById("request-image");
 
     if (currentIndex < messages.length) {
         messageElement.innerHTML = messages[currentIndex];
+        
+        if (currentIndex === 0) {
+            womensDayImage.style.display = "block";
+            womensDayVideo.style.display = "none";
+            introImage.style.display = "none";
+            requestImage.style.display = "none";
+        } else if (currentIndex === 1) {
+            womensDayImage.style.display = "none";
+            womensDayVideo.style.display = "block";
+            womensDayVideo.play();
+            introImage.style.display = "none";
+            requestImage.style.display = "none";
+        } else if (currentIndex === 3) {
+            womensDayImage.style.display = "none";
+            womensDayVideo.style.display = "none";
+            introImage.style.display = "block";
+            requestImage.style.display = "none";
+        } else if (currentIndex === 4) {
+            womensDayImage.style.display = "none";
+            womensDayVideo.style.display = "none";
+            introImage.style.display = "none";
+            requestImage.style.display = "block";
+        } else {
+            womensDayImage.style.display = "none";
+            womensDayVideo.style.display = "none";
+            introImage.style.display = "none";
+            requestImage.style.display = "none";
+        }
+
         currentIndex++;
 
         if (currentIndex === messages.length) {
