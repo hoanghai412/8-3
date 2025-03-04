@@ -1,37 +1,22 @@
+// HTML (index.html)
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trái Tim Yêu Thương</title>
+    <title>Quà 8/3</title>
     <link rel="stylesheet" href="can.css">
 </head>
 <body>
-    <div id="container">
-        <button id="openGift">🎁 Mở quà 🎁</button>
-
-        <div class="heart" id="heart"></div> 
-
-        <div id="message-container" style="display: none;">
+    <div id="screen">
+        <button id="openGift">Mở quà</button>
+        <div id="heart"></div>
+        <div id="message-container">
             <p id="message"></p>
-            <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none;">
-            <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none;">
-            <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none;">
-            <video id="womens-day-video" src="videocho.mp4" controls muted style="display: none;"></video>
             <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
         </div>
-
-        <div id="choice-container" style="display: none;">
-            <p>Giới thiệu xong rồi, bạn có muốn làm quen không? 🥰</p>
-            <button id="yesButton" onclick="sayYes()">Có 💖</button>
-            <button id="noButton" onmouseover="runAway()">Không 😆</button>
-        </div>
     </div>
-
-    <audio id="loveSong" autoplay loop>
-        <source src="videodung.mp3" type="audio/mpeg">
-    </audio>
-
     <script src="script.js"></script>
 </body>
 </html>
+
