@@ -13,6 +13,7 @@ window.onload = function () {
     document.getElementById("heart").style.display = "none";
     document.getElementById("message-container").style.display = "none";
     document.getElementById("openGift").style.display = "block";
+    document.getElementById("choice-container").style.display = "none";
 };
 
 document.getElementById("openGift").addEventListener("click", function () {
@@ -33,6 +34,9 @@ document.getElementById("openGift").addEventListener("click", function () {
         heart.style.transition = "opacity 1s";
         heart.style.opacity = "0";
         setTimeout(() => heart.style.display = "none", 1000);
+    }, 3000);
+
+    setTimeout(() => {
         document.getElementById("message-container").style.display = "block";
     }, 4000);
 });
@@ -40,30 +44,9 @@ document.getElementById("openGift").addEventListener("click", function () {
 function nextMessage() {
     let messageElement = document.getElementById("message");
     let nextButton = document.getElementById("nextButton");
-    let introImage = document.getElementById("intro-image");
-    let requestImage = document.getElementById("request-image");
-    let womensDayImage = document.getElementById("womens-day-image");
-    let womensDayVideo = document.getElementById("womens-day-video");
 
     if (currentIndex < messages.length) {
         messageElement.innerHTML = messages[currentIndex];
-
-        womensDayImage.style.display = "none";
-        womensDayVideo.style.display = "none";
-        introImage.style.display = "none";
-        requestImage.style.display = "none";
-
-        if (currentIndex === 0) {
-            womensDayImage.style.display = "block";
-        } else if (currentIndex === 1) {
-            womensDayVideo.style.display = "block";
-            womensDayVideo.play();
-        } else if (currentIndex === 3) {
-            introImage.style.display = "block";
-        } else if (currentIndex === 4) {
-            requestImage.style.display = "block";
-        }
-
         currentIndex++;
 
         if (currentIndex === messages.length) {
