@@ -8,32 +8,44 @@ let messages = [
 
 let currentIndex = 0;
 
-// Hàm mở quà
-function openGift() {
+// Khi vào trang, màn hình sẽ đen hoàn toàn
+window.onload = function () {
+    document.getElementById("screen").style.backgroundColor = "black";
+    document.getElementById("heart").style.display = "none";
+    document.getElementById("message-container").style.display = "none";
+};
+
+// Nút mở quà
+document.getElementById("openGift").addEventListener("click", function () {
     let screen = document.getElementById("screen");
-    let giftButton = document.getElementById("giftButton");
-    let heart = document.getElementById("heart");
+    let transitionTime = 2000; // 2 giây
     
-    // Chuyển dần màn hình từ đen sang hồng
-    screen.style.transition = "background-color 2s";
-    screen.style.backgroundColor = "pink";
-    
-    // Ẩn nút mở quà
-    giftButton.style.display = "none";
-    
-    // Hiện trái tim
-    heart.style.display = "block";
-    
-    // Sau 3 giây thì ẩn trái tim
+    let step = 0;
+    let interval = setInterval(() => {
+        step += 0.05;
+        let colorValue = Math.min(255, Math.floor(step * 255));
+        screen.style.backgroundColor = `rgb(${colorValue}, ${Math.floor(colorValue * 0.8)}, ${Math.floor(colorValue * 0.9)})`;
+        
+        if (colorValue >= 255) {
+            clearInterval(interval);
+        }
+    }, transitionTime / 20);
+
+    // Sau 3 giây hiện trái tim
     setTimeout(() => {
+        document.getElementById("heart").style.display = "block";
+    }, 3000);
+
+    // Sau 6 giây thì ẩn trái tim và hiện tin nhắn
+    setTimeout(() => {
+        let heart = document.getElementById("heart");
         heart.style.transition = "opacity 1s";
         heart.style.opacity = "0";
         setTimeout(() => heart.style.display = "none", 1000);
-        
-        // Khi trái tim biến mất, hiện phần giới thiệu
+
         document.getElementById("message-container").style.display = "block";
-    }, 3000);
-}
+    }, 6000);
+});
 
 function nextMessage() {
     let messageElement = document.getElementById("message");
@@ -46,13 +58,11 @@ function nextMessage() {
     if (currentIndex < messages.length) {
         messageElement.innerHTML = messages[currentIndex];
 
-        // Ẩn tất cả hình ảnh & video trước khi kiểm tra điều kiện
         womensDayImage.style.display = "none";
         womensDayVideo.style.display = "none";
         introImage.style.display = "none";
         requestImage.style.display = "none";
 
-        // Hiển thị hình ảnh hoặc video theo từng bước
         if (currentIndex === 0) {
             womensDayImage.style.display = "block";
         } else if (currentIndex === 1) {
@@ -67,8 +77,41 @@ function nextMessage() {
         currentIndex++;
 
         if (currentIndex === messages.length) {
-            nextButton.style.display = "none"; // Ẩn nút tiếp theo khi hết tin nhắn
-            document.getElementById("choice-container").style.display = "block"; // Hiện câu hỏi làm quen
+            nextButton.style.display = "none";
+            document.getElementById("choice-container").style.display = "block";
         }
     }
 }
+
+function sayYes() {
+    alert("Yayyy! Mình làm bạn nhé! 💖🥰");
+}
+
+function runAway() {
+    let noButton = document.getElementById("noButton");
+    
+    let maxX = window.innerWidth - noButton.clientWidth - 20;
+    let maxY = window.innerHeight - noButton.clientHeight - 20;
+    
+    let x = Math.random() * maxX;
+    let y = Math.random() * maxY;
+
+    noButton.style.position = "absolute";
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+}
+
+document.getElementById("noButton").addEventListener("mouseover", runAway);
+document.getElementById("noButton").addEventListener("click", runAway);
+document.getElementById("noButton").addEventListener("touchstart", runAway);
+
+document.addEventListener("DOMContentLoaded", function () {
+    let music = document.getElementById("loveSong");
+
+    function playMusic() {
+        music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
+    }
+
+    document.body.addEventListener("click", playMusic, { once: true });
+    document.body.addEventListener("touchstart", playMusic, { once: true });
+});
