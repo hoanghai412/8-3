@@ -13,6 +13,7 @@ window.onload = function () {
     document.getElementById("screen").style.backgroundColor = "black";
     document.getElementById("heart").style.display = "none";
     document.getElementById("message-container").style.display = "none";
+    document.getElementById("openGift").style.display = "block";
 };
 
 // Nút mở quà
@@ -31,6 +32,8 @@ document.getElementById("openGift").addEventListener("click", function () {
         }
     }, transitionTime / 20);
 
+    document.getElementById("openGift").style.display = "none";
+    
     // Sau 3 giây hiện trái tim
     setTimeout(() => {
         document.getElementById("heart").style.display = "block";
