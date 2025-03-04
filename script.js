@@ -7,7 +7,6 @@ let messages = [
 ];
 
 let currentIndex = 0;
-
 window.onload = function () {
     document.getElementById("screen").style.backgroundColor = "black";
     document.getElementById("heart").style.display = "none";
@@ -98,6 +97,30 @@ document.addEventListener("DOMContentLoaded", function () {
     function playMusic() {
         music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
     }
+    document.body.addEventListener("click", playMusic, { once: true });
+    document.body.addEventListener("touchstart", playMusic, { once: true });
+});
+
+// Nút "Không" chạy trốn (Cải thiện để chạy tốt trên điện thoại)
+function runAway() {
+    let noButton = document.getElementById("noButton");
+    let x = Math.random() * (window.innerWidth - noButton.clientWidth);
+    let y = Math.random() * (window.innerHeight - noButton.clientHeight);
+
+    noButton.style.position = "absolute";
+    noButton.style.left = `${x}px`;
+    noButton.style.top = `${y}px`;
+}
+
+// Tự động phát nhạc khi trang load hoặc khi người dùng nhấn vào màn hình
+document.addEventListener("DOMContentLoaded", function () {
+    let music = document.getElementById("loveSong");
+
+    function playMusic() {
+        music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
+    }
+
+    // Phát nhạc khi người dùng click hoặc chạm vào trang
     document.body.addEventListener("click", playMusic, { once: true });
     document.body.addEventListener("touchstart", playMusic, { once: true });
 });
