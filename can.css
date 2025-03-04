@@ -5,6 +5,10 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Căn giữa toàn bộ nội dung */
@@ -13,27 +17,37 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 /* Tùy chỉnh nút bấm */
 button {
-    background-color: #ff66b2;
+    background-color: #ff66b2; /* Màu hồng */
     color: white;
     border: none;
     padding: 15px 30px;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 50px; /* Bo tròn */
     margin: 10px;
-    transition: all 0.3s;
+    transition: all 0.5s ease-in-out;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #ff3385;
+    background-color: #ff3385; /* Hồng đậm hơn */
     transform: scale(1.1);
+}
+
+/* Hiệu ứng mở quà từ đen sang hồng */
+#openGift {
+    background-color: black;
+    animation: colorFade 3s forwards;
+}
+
+@keyframes colorFade {
+    0% { background-color: black; }
+    100% { background-color: #ff66b2; }
 }
 
 /* Căn chỉnh ảnh */
@@ -41,22 +55,6 @@ img, video {
     max-width: 300px;
     border-radius: 10px;
     margin-top: 10px;
-}
-
-/* Hiệu ứng trái tim */
-.heart {
-    width: 100px;
-    height: 100px;
-    background: red;
-    position: absolute;
-    top: 50px;
-    animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
 }
 
 /* Nút chạy trốn */
