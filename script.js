@@ -7,6 +7,21 @@ let messages = [
 ];
 
 let currentIndex = 0;
+document.getElementById("heart").style.display = "none"; // Ẩn trái tim ban đầu
+...
+setTimeout(() => {
+    let heart = document.getElementById("heart");
+    heart.style.display = "block";
+    heart.style.animation = "heartbeat 1.5s infinite";
+}, 1000);
+...
+setTimeout(() => {
+    let heart = document.getElementById("heart");
+    heart.style.transition = "opacity 1s";
+    heart.style.opacity = "0";
+    setTimeout(() => heart.style.display = "none", 1000);
+    document.getElementById("message-container").style.display = "block";
+}, 4000);
 window.onload = function () {
     document.getElementById("screen").style.backgroundColor = "black";
     document.getElementById("heart").style.display = "none";
