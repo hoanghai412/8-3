@@ -20,20 +20,20 @@ window.onload = function () {
 document.getElementById("openGift").addEventListener("click", function () {
     let screen = document.getElementById("screen");
     let transitionTime = 2000; // 2 giây
-    
+
     let step = 0;
     let interval = setInterval(() => {
         step += 0.05;
         let colorValue = Math.min(255, Math.floor(step * 255));
         screen.style.backgroundColor = `rgb(${colorValue}, ${Math.floor(colorValue * 0.8)}, ${Math.floor(colorValue * 0.9)})`;
-        
+
         if (colorValue >= 255) {
             clearInterval(interval);
         }
     }, transitionTime / 20);
 
     document.getElementById("openGift").style.display = "none";
-    
+
     // Sau 3 giây hiện trái tim
     setTimeout(() => {
         document.getElementById("heart").style.display = "block";
@@ -92,10 +92,10 @@ function sayYes() {
 
 function runAway() {
     let noButton = document.getElementById("noButton");
-    
+
     let maxX = window.innerWidth - noButton.clientWidth - 20;
     let maxY = window.innerHeight - noButton.clientHeight - 20;
-    
+
     let x = Math.random() * maxX;
     let y = Math.random() * maxY;
 
