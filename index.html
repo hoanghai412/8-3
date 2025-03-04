@@ -7,29 +7,30 @@
     <link rel="stylesheet" href="can.css">
 </head>
 <body>
-    <div id="container">
-        <button id="openGift">🎁 Mở quà 🎁</button>
+    <!-- Trái tim xuất hiện trước -->
+    <div class="heart" id="heart"></div> 
 
-        <div class="heart" id="heart"></div> 
+    <!-- Ẩn chữ ban đầu -->
+    <h1 id="intro-text" style="display: none;">💖 Chào mừng đến với thế giới yêu thương 💖</h1>  
 
-        <div id="message-container" style="display: none;">
-            <p id="message"></p>
-            <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none;">
-            <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none;">
-            <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none;">
-            <video id="womens-day-video" src="videocho.mp4" controls muted style="display: none;"></video>
-            <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
-        </div>
-
-        <div id="choice-container" style="display: none;">
-            <p>Giới thiệu xong rồi, bạn có muốn làm quen không? 🥰</p>
-            <button id="yesButton" onclick="sayYes()">Có 💖</button>
-            <button id="noButton" onmouseover="runAway()">Không 😆</button>
-        </div>
+    <div id="message-container" style="display: none;">
+        <p id="message"></p>
+        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px; height: auto;">
+        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px; height: auto;">
+        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px; height: auto;">
+        <video id="womens-day-video" src="videocho.mp4" controls style="display: none; width: 300px;"></video>
+        <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
     </div>
 
+    <div id="choice-container" style="display: none;">
+        <p>Giới thiệu xong rồi, bạn có muốn làm quen không? 🥰</p>
+        <button id="yesButton" onclick="sayYes()">Có 💖</button>
+        <button id="noButton" onmouseover="runAway()">Không 😆</button>
+    </div>
+
+    <!-- Nhạc tự động phát -->
     <audio id="loveSong" autoplay loop>
-        <source src="videodung.mp3" type="audio/mpeg">
+        <source src="nhac1.mp3" type="audio/mpeg">
     </audio>
 
     <script src="script.js"></script>
