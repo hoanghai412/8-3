@@ -183,3 +183,34 @@ document.addEventListener("DOMContentLoaded", function () {
     let music = document.getElementById("loveSong");
     music.play().catch(error => console.log("Tự động phát nhạc bị chặn:", error));
 });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let music = document.getElementById("loveSong");
+        let heart = document.getElementById("heart");
+        let introText = document.getElementById("intro-text");
+        let messageContainer = document.getElementById("message-container");
+
+        function playMusic() {
+            music.play().catch(error => console.log("Autoplay bị chặn:", error));
+        }
+
+        // Kích hoạt nhạc khi người dùng click
+        document.body.addEventListener("click", playMusic, { once: true });
+
+        // Sau 3 giây hiển thị chữ "Chào mừng..."
+        setTimeout(() => {
+            introText.style.display = "block";
+        }, 3000);
+
+        // Sau 5 giây ẩn trái tim và hiển thị phần tin nhắn
+        setTimeout(() => {
+            heart.style.transition = "opacity 1s";
+            heart.style.opacity = "0";
+
+            setTimeout(() => {
+                heart.style.display = "none";
+                messageContainer.style.display = "block"; // Hiển thị tin nhắn
+            }, 1000);
+        }, 5000);
+    });
+</script>
