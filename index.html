@@ -7,17 +7,14 @@
     <link rel="stylesheet" href="can.css">
 </head>
 <body>
-    <!-- Trái tim xuất hiện trước -->
     <div class="heart" id="heart"></div> 
-
-    <!-- Ẩn chữ ban đầu -->
     <h1 id="intro-text" style="display: none;">💖 Chào mừng đến với thế giới yêu thương 💖</h1>  
 
     <div id="message-container" style="display: none;">
         <p id="message"></p>
-        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px; height: auto;">
-        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px; height: auto;">
-        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px; height: auto;">
+        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px;">
+        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px;">
+        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px;">
         <video id="womens-day-video" src="videocho.mp4" controls style="display: none; width: 300px;"></video>
         <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
     </div>
@@ -28,10 +25,22 @@
         <button id="noButton" onmouseover="runAway()">Không 😆</button>
     </div>
 
-    <!-- Nhạc tự động phát -->
-    <audio id="loveSong" autoplay loop>
-        <source src="videodung,mp3" type="audio/mpeg">
+    <audio id="loveSong" loop>
+        <source src="videodung.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let music = document.getElementById("loveSong");
+
+            function playMusic() {
+                music.play().catch(error => console.log("Autoplay bị chặn:", error));
+            }
+
+            // Kích hoạt nhạc khi người dùng click
+            document.body.addEventListener("click", playMusic, { once: true });
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>
