@@ -16,43 +16,39 @@ window.onload = function () {
 
 // Nút mở quà
 document.getElementById("openGift").addEventListener("click", function () {
-    document.getElementById("heart").style.display = "block";
     document.getElementById("openGift").style.display = "none";
+    
+    setTimeout(() => {
+        document.getElementById("heart").style.display = "block";
+    }, 2000);
 
     setTimeout(() => {
-        document.getElementById("heart").style.opacity = "0";
-        setTimeout(() => {
-            document.getElementById("heart").style.display = "none";
-            document.getElementById("message-container").style.display = "block";
-        }, 1000);
-    }, 3000);
+        document.getElementById("heart").style.display = "none";
+        document.getElementById("message-container").style.display = "block";
+    }, 4000);
 });
 
 function nextMessage() {
     let messageElement = document.getElementById("message");
     let nextButton = document.getElementById("nextButton");
-    let introImage = document.getElementById("intro-image");
-    let requestImage = document.getElementById("request-image");
-    let womensDayImage = document.getElementById("womens-day-image");
-    let womensDayVideo = document.getElementById("womens-day-video");
 
     if (currentIndex < messages.length) {
         messageElement.innerHTML = messages[currentIndex];
 
-        womensDayImage.style.display = "none";
-        womensDayVideo.style.display = "none";
-        introImage.style.display = "none";
-        requestImage.style.display = "none";
+        document.getElementById("intro-image").style.display = "none";
+        document.getElementById("request-image").style.display = "none";
+        document.getElementById("womens-day-image").style.display = "none";
+        document.getElementById("womens-day-video").style.display = "none";
 
         if (currentIndex === 0) {
-            womensDayImage.style.display = "block";
+            document.getElementById("womens-day-image").style.display = "block";
         } else if (currentIndex === 1) {
-            womensDayVideo.style.display = "block";
-            womensDayVideo.play();
+            document.getElementById("womens-day-video").style.display = "block";
+            document.getElementById("womens-day-video").play();
         } else if (currentIndex === 3) {
-            introImage.style.display = "block";
+            document.getElementById("intro-image").style.display = "block";
         } else if (currentIndex === 4) {
-            requestImage.style.display = "block";
+            document.getElementById("request-image").style.display = "block";
         }
 
         currentIndex++;
@@ -82,13 +78,6 @@ function runAway() {
     noButton.style.top = `${y}px`;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    let music = document.getElementById("loveSong");
-
-    function playMusic() {
-        music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
-    }
-
-    document.body.addEventListener("click", playMusic, { once: true });
-    document.body.addEventListener("touchstart", playMusic, { once: true });
-});
+document.getElementById("noButton").addEventListener("mouseover", runAway);
+document.getElementById("noButton").addEventListener("click", runAway);
+document.getElementById("noButton").addEventListener("touchstart", runAway);
