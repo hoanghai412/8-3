@@ -1,39 +1,20 @@
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trái Tim Yêu Thương</title>
-    <link rel="stylesheet" href="can.css">
-</head>
 <body>
-    <!-- Trái tim xuất hiện trước -->
-    <div class="heart" id="heart"></div> 
+    <!-- Màn hình đen ban đầu -->
+    <div id="screen" style="width:100vw; height:100vh; position:fixed; top:0; left:0; background-color: black;"></div>
 
-    <!-- Ẩn chữ ban đầu -->
-    <h1 id="intro-text" style="display: none;">💖 Chào mừng đến với thế giới yêu thương 💖</h1>  
+    <!-- Nút mở quà -->
+    <button id="openGift" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
+        Mở quà
+    </button>
 
-    <div id="message-container" style="display: none;">
+    <!-- Trái tim -->
+    <div class="heart" id="heart" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+
+    <!-- Nội dung tin nhắn -->
+    <div id="message-container" style="display: none; text-align: center; position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%);">
         <p id="message"></p>
-        <img id="intro-image" src="gioithieu.jpg" alt="Giới thiệu Hải" style="display: none; width: 200px; height: auto;">
-        <img id="request-image" src="cho.jpg" alt="Làm quen nha?" style="display: none; width: 200px; height: auto;">
-        <img id="womens-day-image" src="8-3.jpg" alt="Chúc mừng 8/3" style="display: none; width: 250px; height: auto;">
-        <video id="womens-day-video" src="videocho.mp4" controls muted style="display: none; width: 300px;"></video>
         <button id="nextButton" onclick="nextMessage()">Tiếp theo</button>
     </div>
 
-    <div id="choice-container" style="display: none;">
-        <p>Giới thiệu xong rồi, bạn có muốn làm quen không? 🥰</p>
-        <button id="yesButton" onclick="sayYes()">Có 💖</button>
-        <button id="noButton" onmouseover="runAway()">Không 😆</button>
-    </div>
-
-    <!-- Nhạc tự động phát -->
-    <audio id="loveSong" autoplay loop>
-        <source src="videodung.mp3" type="audio/mpeg">
-    </audio>
-
     <script src="script.js"></script>
 </body>
-</html>
