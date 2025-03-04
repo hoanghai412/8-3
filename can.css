@@ -17,39 +17,61 @@ body {
 }
 
 button {
-    background-color: pink;
+    margin-top: 10px;
+    padding: 10px 20px;
     border: none;
-    padding: 15px 30px;
+    background: #ff4757;
+    color: white;
     font-size: 16px;
-    border-radius: 25px;
+    border-radius: 20px;
     cursor: pointer;
-    margin: 10px;
-    transition: transform 0.2s;
+    box-shadow: 0 5px 10px rgba(255, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
 button:hover {
+    background: #e84118;
     transform: scale(1.1);
 }
 
-#heart {
+/* Trái tim lung linh */
+.heart {
     width: 100px;
     height: 100px;
     background-color: red;
     position: absolute;
+    transform: rotate(-45deg);
+    animation: beat 1s infinite ease-in-out, floating 3s infinite ease-in-out;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
-    display: none;
 }
 
-#heart:before,
-#heart:after {
+/* Hai nửa tròn của trái tim */
+.heart::before, .heart::after {
     content: "";
     width: 100px;
     height: 100px;
     background-color: red;
     border-radius: 50%;
     position: absolute;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+/* Hiệu ứng đập theo nhịp tim */
+@keyframes beat {
+    0%, 100% { transform: scale(1) rotate(-45deg); box-shadow: 0 0 30px rgba(255, 0, 0, 1); }
+    50% { transform: scale(1.3) rotate(-45deg); box-shadow: 0 0 50px rgba(255, 50, 50, 1); }
 }
 
 #heart:before {
