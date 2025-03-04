@@ -8,21 +8,32 @@ let messages = [
 
 let currentIndex = 0;
 
-// Sau 3 giây hiện chữ
-setTimeout(() => {
-    document.getElementById("intro-text").style.display = "block";
-}, 3000);
-
-// Sau 5s thì ẩn trái tim
-setTimeout(() => {
+// Hàm mở quà
+function openGift() {
+    let screen = document.getElementById("screen");
+    let giftButton = document.getElementById("giftButton");
     let heart = document.getElementById("heart");
-    heart.style.transition = "opacity 1s";
-    heart.style.opacity = "0";
-    setTimeout(() => heart.style.display = "none", 1000);
-
-    // Khi trái tim biến mất, hiện phần giới thiệu
-    document.getElementById("message-container").style.display = "block";
-}, 5000);
+    
+    // Chuyển dần màn hình từ đen sang hồng
+    screen.style.transition = "background-color 2s";
+    screen.style.backgroundColor = "pink";
+    
+    // Ẩn nút mở quà
+    giftButton.style.display = "none";
+    
+    // Hiện trái tim
+    heart.style.display = "block";
+    
+    // Sau 3 giây thì ẩn trái tim
+    setTimeout(() => {
+        heart.style.transition = "opacity 1s";
+        heart.style.opacity = "0";
+        setTimeout(() => heart.style.display = "none", 1000);
+        
+        // Khi trái tim biến mất, hiện phần giới thiệu
+        document.getElementById("message-container").style.display = "block";
+    }, 3000);
+}
 
 function nextMessage() {
     let messageElement = document.getElementById("message");
@@ -61,41 +72,3 @@ function nextMessage() {
         }
     }
 }
-
-// Nút "Có"
-function sayYes() {
-    alert("Yayyy! Mình làm bạn nhé! 💖🥰");
-}
-
-// Nút "Không" chạy trốn (Tối ưu để chạy liên tục trên cả điện thoại và máy tính)
-function runAway() {
-    let noButton = document.getElementById("noButton");
-    
-    let maxX = window.innerWidth - noButton.clientWidth - 20; // Giới hạn vị trí
-    let maxY = window.innerHeight - noButton.clientHeight - 20;
-    
-    let x = Math.random() * maxX;
-    let y = Math.random() * maxY;
-
-    noButton.style.position = "absolute";
-    noButton.style.left = `${x}px`;
-    noButton.style.top = `${y}px`;
-}
-
-// Gắn sự kiện để nút "Không" chạy khi người dùng chạm hoặc rê chuột vào
-document.getElementById("noButton").addEventListener("mouseover", runAway);
-document.getElementById("noButton").addEventListener("click", runAway);
-document.getElementById("noButton").addEventListener("touchstart", runAway);
-
-// Tự động phát nhạc khi trang load hoặc khi người dùng nhấn vào màn hình
-document.addEventListener("DOMContentLoaded", function () {
-    let music = document.getElementById("loveSong");
-
-    function playMusic() {
-        music.play().catch(error => console.log("Không thể tự động phát nhạc:", error));
-    }
-
-    // Phát nhạc khi người dùng click hoặc chạm vào trang
-    document.body.addEventListener("click", playMusic, { once: true });
-    document.body.addEventListener("touchstart", playMusic, { once: true });
-});
