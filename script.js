@@ -8,10 +8,10 @@ let messages = [
 
 let currentIndex = 0;
 
-// Sau 3 giây mới hiện chữ
+// Sau 3 giây hiện chữ
 setTimeout(() => {
     document.getElementById("intro-text").style.display = "block";
-}, 5000);
+}, 3000);
 
 // Sau 5s thì ẩn trái tim
 setTimeout(() => {
@@ -67,16 +67,25 @@ function sayYes() {
     alert("Yayyy! Mình làm bạn nhé! 💖🥰");
 }
 
-// Nút "Không" chạy trốn (Cải thiện để chạy tốt trên điện thoại)
+// Nút "Không" chạy trốn (Tối ưu để chạy liên tục trên cả điện thoại và máy tính)
 function runAway() {
     let noButton = document.getElementById("noButton");
-    let x = Math.random() * (window.innerWidth - noButton.clientWidth);
-    let y = Math.random() * (window.innerHeight - noButton.clientHeight);
+    
+    let maxX = window.innerWidth - noButton.clientWidth - 20; // Giới hạn vị trí
+    let maxY = window.innerHeight - noButton.clientHeight - 20;
+    
+    let x = Math.random() * maxX;
+    let y = Math.random() * maxY;
 
     noButton.style.position = "absolute";
     noButton.style.left = `${x}px`;
     noButton.style.top = `${y}px`;
 }
+
+// Gắn sự kiện để nút "Không" chạy khi người dùng chạm hoặc rê chuột vào
+document.getElementById("noButton").addEventListener("mouseover", runAway);
+document.getElementById("noButton").addEventListener("click", runAway);
+document.getElementById("noButton").addEventListener("touchstart", runAway);
 
 // Tự động phát nhạc khi trang load hoặc khi người dùng nhấn vào màn hình
 document.addEventListener("DOMContentLoaded", function () {
